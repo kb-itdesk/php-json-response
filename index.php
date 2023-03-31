@@ -6,8 +6,8 @@ require_once "./Libraries/JsonResponseErrors.php";
 
 /** library namespace */
 
-use Libraries\Response\JsonResponse;
-use Libraries\Errors\JsonResponseErrors;
+use Libraries\Response\JsonResponseBag;
+use Libraries\Errors\JsonResponseBagErrors;
 
 /** sample response data */
 $data = new stdClass();
@@ -24,14 +24,14 @@ $data->last_name = "naqvi";
  * 3- data @array|@object|@string
  */
 
-$response = new JsonResponse();
+$response = new JsonResponseBag();
 
 /** set response data */
 $response->setData($data);
 
 
 /** create instance to handle errors for response */
-$errors = new JsonResponseErrors();
+$errors = new JsonResponseBagErrors();
 
 /** add error codes to Error instance
  *  use method addErrorCode(int) pass your code as integer

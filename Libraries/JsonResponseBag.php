@@ -4,7 +4,7 @@ namespace Libraries\Response;
 
 use JsonException;
 
-class JsonResponse
+class JsonResponseBag
 {
     private bool $success;
     private array $errors;
@@ -60,21 +60,21 @@ class JsonResponse
         return $this->errors;
     }
 
-    public function setData($data): JsonResponse
+    public function setData($data): JsonResponseBag
     {
         $this->data = $data;
 
         return $this;
     }
 
-    public function setErrors(array $errors): JsonResponse
+    public function setErrors(array $errors): JsonResponseBag
     {
         $this->errors = $errors;
 
         return $this;
     }
 
-    public function setStatus(bool $status): JsonResponse
+    public function setStatus(bool $status): JsonResponseBag
     {
         $this->success = $status;
 

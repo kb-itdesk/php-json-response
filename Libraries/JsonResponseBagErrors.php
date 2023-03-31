@@ -2,19 +2,19 @@
 
 namespace Libraries\Errors;
 
-class JsonResponseErrors
+class JsonResponseBagErrors
 {
     protected array $errors = [];
     protected array $errorsCodes = [];
 
-    public function addErrorCode(int $codes): JsonResponseErrors
+    public function addErrorCode(int $codes): JsonResponseBagErrors
     {
         $this->errorsCodes[] = $codes;
 
         return $this;
     }
 
-    public function addMessage(string $message, int $code): JsonResponseErrors
+    public function addMessage(string $message, int $code): JsonResponseBagErrors
     {
         $this->errors[] = array(
             "message" => $message,
@@ -44,7 +44,7 @@ class JsonResponseErrors
         return !empty($this->getAllErrors());
     }
 
-    public function clear(): JsonResponseErrors
+    public function clear(): JsonResponseBagErrors
     {
         $this->errors = [];
         $this->errorsCodes = [];
