@@ -1,6 +1,6 @@
 <?php
 
-namespace Libraries\Response;
+namespace Libraries;
 
 use JsonException;
 

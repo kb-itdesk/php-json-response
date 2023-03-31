@@ -1,6 +1,6 @@
 <?php
 
-namespace Libraries\Errors;
+namespace Libraries;
 
 class JsonResponseBagErrors
 {
