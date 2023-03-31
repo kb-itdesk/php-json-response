@@ -1,13 +1,13 @@
 <?php
 
 /** import library */
-require_once "Libraries/Response.php";
-require_once "Libraries/Errors.php";
+require_once "./Libraries/JsonResponse.php";
+require_once "./Libraries/JsonResponseErrors.php";
 
 /** library namespace */
 
-use Libraries\Response\Response;
-use Libraries\Errors\Errors;
+use Libraries\Response\JsonResponse;
+use Libraries\Errors\JsonResponseErrors;
 
 /** sample response data */
 $data = new stdClass();
@@ -24,14 +24,14 @@ $data->last_name = "naqvi";
  * 3- data @array|@object|@string
  */
 
-$response = new Response();
+$response = new JsonResponse();
 
 /** set response data */
 $response->setData($data);
 
 
 /** create instance to handle errors for response */
-$errors = new Errors();
+$errors = new JsonResponseErrors();
 
 /** add error codes to Error instance
  *  use method addErrorCode(int) pass your code as integer

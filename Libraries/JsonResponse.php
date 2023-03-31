@@ -2,41 +2,41 @@
 
 namespace Libraries\Response;
 
-require_once "Errors.php";
+use JsonException;
 
-
-use Libraries\Errors\Errors;
-
-class Response
+class JsonResponse
 {
     private bool $success;
-    private $errors;
+    private array $errors;
     private $data;
 
     /**
      * Response constructor.
      * @param bool $success
-     * @param Errors|null $errors
+     * @param array|null $errors
      * @param null $data
      */
-    function __construct(bool $success = false, Errors $errors = null, $data = null)
+    public function __construct(bool $success = false, array $errors = null, $data = null)
     {
         $this->success = $success;
         $this->errors = $errors;
         $this->data = $data;
     }
 
-    function toJson()
+    /**
+     * @throws JsonException
+     */
+    public function toJson(): void
     {
         header('Content-Type: application/json; charset=utf-8');
         exit(json_encode([
             "success" => $this->success,
             "errors" => $this->errors,
             "data" => $this->data,
-        ]));
+        ], JSON_THROW_ON_ERROR));
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return array(
             "success" => $this->success,
@@ -55,26 +55,29 @@ class Response
         return $this->success;
     }
 
-    public function getErrors(): Errors
+    public function getErrors(): array
     {
         return $this->errors;
     }
 
-    public function setData($data): Response
+    public function setData($data): JsonResponse
     {
         $this->data = $data;
+
         return $this;
     }
 
-    public function setErrors(array $errors): Response
+    public function setErrors(array $errors): JsonResponse
     {
         $this->errors = $errors;
+
         return $this;
     }
 
-    public function setStatus(bool $status): Response
+    public function setStatus(bool $status): JsonResponse
     {
         $this->success = $status;
+
         return $this;
     }
 }
