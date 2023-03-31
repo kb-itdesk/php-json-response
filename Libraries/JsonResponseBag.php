@@ -16,7 +16,7 @@ class JsonResponseBag
      * @param array|null $errors
      * @param null $data
      */
-    public function __construct(bool $success = false, array $errors = null, $data = null)
+    public function __construct(bool $success = false, array $errors = [], $data = null)
     {
         $this->success = $success;
         $this->errors = $errors;
